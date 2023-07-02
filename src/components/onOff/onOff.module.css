@@ -1,0 +1,32 @@
+buttonOn {
+    box-sizing: border-box;
+    padding: 5px;
+    width: 60px;
+    height: 30px;
+    margin-right: 5px;
+    background-color: green;
+}
+
+buttonOff {
+    box-sizing: border-box;
+    padding: 5px;
+    width: 60px;
+    height: 30px;
+    margin-right: 5px;
+    background-color: red;
+}
+
+
+.indicatorOn {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: green;
+}
+
+.indicatorOff {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: red;
+}
