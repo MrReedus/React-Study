@@ -2,13 +2,12 @@ import React from 'react';
 import styles from './onOff.module.css'
 
 type onOffPropsType = {
-
+    on: boolean
+    toggler: (value: boolean) => void
 }
 
 
-
-const OnOff = () => {
-    let [on,setOn] = React.useState(false)
+const OnOff = (props : onOffPropsType) => {
 
 
     const onStyle = {
@@ -19,7 +18,7 @@ const OnOff = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: on ? 'green' : 'white',
+        backgroundColor: props.on ? 'green' : 'white',
         cursor: 'pointer',
         transition: '0.3s ease'
 
@@ -32,7 +31,7 @@ const OnOff = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: on ? 'white' : 'red',
+        backgroundColor: props.on  ? 'white' : 'red',
         cursor: 'pointer',
         transition: '0.3s ease'
     }
@@ -42,23 +41,27 @@ const OnOff = () => {
         borderRadius: '100%',
         border: '1px solid black',
         alignSelf: 'center',
-        backgroundColor: on ? 'green' : 'red',
+        backgroundColor: props.on  ? 'green' : 'red',
         transition: '0.3s ease-in'
 
     }
 
-
+    const callBack = (value: boolean) => {
+        props.toggler(value)
+    }
     return (
 
 
-        <div style={{display: 'flex', columnGap:'10px', marginBottom: '12px'}}>
+        <div style={{display: 'flex', columnGap: '10px', marginBottom: '12px'}}>
             <div style={onStyle}
-                 onClick={() => (setOn(true))}
-            >on</div>
+                 onClick={() => callBack(true)}
+            >on
+            </div>
             <div
                 style={offStyle}
-                onClick={() => (setOn(false))}
-            >off</div>
+                onClick={() => callBack(false)}
+            >off
+            </div>
             <div style={indicatorStyle}></div>
         </div>
     )

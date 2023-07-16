@@ -1,36 +1,42 @@
 import React from 'react';
-import { useState } from "react";
+import {useState} from "react";
 
 
 type AccordeonPropsType = {
     title: string,
     collapsed: boolean
+    onClick: () => void
 }
 const Accordeon = (props: AccordeonPropsType) => {
 
+    return (
+        <div>
+            <AccordeonTitle title={props.title} onClick={props.onClick}/>
+            {!props.collapsed && <AccordeonBody/>}
 
-        return (
-            <div>
-                <AccordeonTitle title={props.title}/>
-                { !props.collapsed && <AccordeonBody/>}
-
-            </div>
-        )
-
-
+        </div>
+    )
 
 
 };
 
 type AccordeonTitlePropsType = {
     title: string
+    onClick: () => void
 }
-
 
 
 function AccordeonTitle(props: AccordeonTitlePropsType) {
-    return <h3>{props.title}</h3>
+
+    const onClickHandler = () => {
+        props.onClick()
+    }
+
+    return <h3
+        onClick={onClickHandler}
+    >{props.title}</h3>
 }
+
 function AccordeonBody() {
 
     return (
