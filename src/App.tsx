@@ -35,18 +35,15 @@ function App() {
         setAccordeonCollapsed(!accordeonCollapsed)
     }
 
-    let [on,setOn] = React.useState(false)
+    let [on, setOn] = React.useState(false)
 
-
-    // const toggler = (value: boolean) => {
-    //     setOn(value)
-    // }
 
     return (
         <div className="App">
 
             <Rating value={ratingValue} onClick={setRatingValue}/>
-            <Accordeon title={'Меню 1'} collapsed={accordeonCollapsed} onClick={accordeonShow} />
+            <Accordeon title={'Меню 1'} collapsed={accordeonCollapsed} onClick={accordeonShow} items={['Jenya', 'Sasha', 'Egor']}/>
+
             <OnOff toggler={setOn} on={on}/>
             <MyInput setTitle={setTitle} title={title}/>
             <MyButton name={'Добавить'} callBack={() => {
@@ -55,6 +52,7 @@ function App() {
             <ul>
                 {messages.map(m => (<li>{m.message}</li>))}
             </ul>
+
         </div>
     );
 }

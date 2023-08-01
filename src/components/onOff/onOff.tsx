@@ -9,7 +9,6 @@ type onOffPropsType = {
 
 const OnOff = (props : onOffPropsType) => {
 
-
     const onStyle = {
         width: '30px ',
         height: '20px',

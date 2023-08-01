@@ -6,14 +6,14 @@ type AccordeonPropsType = {
     title: string,
     collapsed: boolean
     onClick: () => void
+    items: string[]
 }
 const Accordeon = (props: AccordeonPropsType) => {
 
     return (
         <div>
             <AccordeonTitle title={props.title} onClick={props.onClick}/>
-            {!props.collapsed && <AccordeonBody/>}
-
+            {!props.collapsed && <AccordeonBody items={props.items}/>}
         </div>
     )
 
@@ -37,13 +37,17 @@ function AccordeonTitle(props: AccordeonTitlePropsType) {
     >{props.title}</h3>
 }
 
-function AccordeonBody() {
+type AccordeonBodyPropsType = {
+
+    items: string[]
+}
+
+function AccordeonBody({items} :AccordeonBodyPropsType  ) {
+
 
     return (
         <ul>
-            <li>-----------</li>
-            <li>-----------</li>
-            <li>-----------</li>
+            {items.map((item,index) =>  <li key={index}>{item}</li>   )}
         </ul>
     )
 }
